@@ -1,7 +1,7 @@
 
 export function Login() {
 	return (
-		<svg className="mr-1" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+		<svg className="mx-1" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
 			viewBox="0 0 296.999 296.999" xmlSpace="preserve">
 			<g>
 				<g>
@@ -20,7 +20,7 @@ export function Login() {
 }
 export function Signup() {
 	return (
-		<svg className="mr-1" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+		<svg className="mx-1" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
 			viewBox="0 0 296.999 296.999" xmlSpace="preserve">
 			<g>
 				<g>

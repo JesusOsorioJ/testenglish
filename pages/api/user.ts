@@ -8,22 +8,44 @@ export default async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  
-  // if (req.method !== 'POST') {
-  //   return res.status(405).json({ message: 'Method not allowed' });
-  // }
+  const user: Prisma.UserCreateInput = JSON.parse(req.body);
 
-  try {
-    // console.log("req.body.email",JSON.parse(req.body));
-    
-    // const user: Prisma.UserCreateInput = JSON.parse(req.body);
-    const ress = await prisma.user.findUnique({
-      where: {
-        email:JSON.parse(req.body).email,
-      },
-    })
-    res.status(200).json({ message: ress });
-  } catch (err) {
-    res.status(400).json({ message: 'Something went wrong' });
+  switch (req.method) {
+
+    case 'PUT':      
+      try {
+        const response = await prisma.user.findMany({
+          where: {
+            email: user.email,
+            password: user.password
+          },
+        })
+        console.log("responseback", response);
+        
+        return res.status(200).json({ message:response});
+      } catch (err) {
+        return res.status(400).json({ message: 'Something went wrong' });
+      }
+    case 'POST':
+      try {
+        const findEmail = await prisma.user.findMany({
+          where: {
+            email: JSON.parse(req.body).email,
+          },
+        })
+        if (findEmail.length > 0) { throw new Error("the user already exist") }
+        const user: Prisma.UserCreateInput = JSON.parse(req.body);
+        const response = await prisma.user.create({
+          data: user,
+        })
+        return res.status(200).json({ message: response });
+      } catch (err) {
+        return res.status(400).json({ message: err + "" });
+      }
+    default:
+      return res.status(405).json({ message: 'Method not allowed' });
   }
+
+
+
 }
