@@ -6,10 +6,10 @@ import { Signup, Back, Charge } from '../styles/icons/icons'
 
 type Props = {
     view: String
-    setView:  React.Dispatch<React.SetStateAction<string>>
-  }
+    setView: React.Dispatch<React.SetStateAction<string>>
+}
 
-const LoginSignup: React.FC<Props> = ({ view, setView }) =>{
+const LoginSignup: React.FC<Props> = ({ view, setView }) => {
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("")
     const [charge, setCharge] = useState(false)
@@ -21,7 +21,7 @@ const LoginSignup: React.FC<Props> = ({ view, setView }) =>{
         if (view == "signup") {
             const { message } = await fetch('/api/user?type=signup', {
                 method: 'POST',
-                body: JSON.stringify({ ...data, answer: "{}", lastAnswer:1 })
+                body: JSON.stringify({ ...data, answer: "{}", lastAnswer: 1 })
             }).then(data => data.json())
             if (message?.email != null) {
                 await sessionStorage.setItem("userTestEnglish", message.email)
@@ -44,7 +44,7 @@ const LoginSignup: React.FC<Props> = ({ view, setView }) =>{
                     setError('Lo sentimos no se encontro user o contraseña')
                 }
             }
-            setCharge(false)
+        setCharge(false)
     }
     return (
         <div className="fixed w-screen h-screen">
@@ -77,9 +77,9 @@ const LoginSignup: React.FC<Props> = ({ view, setView }) =>{
                         </div>}
                     <div className='flex justify-around mt-8'>
                         <button className=" flex items-center rounded bg-red-400 hover:bg-red-600 text-gray-100 py-2 px-3 max-w-[10rem]"
-                            onClick={() => setView("landing")}><Back/><p className='ml-1'>Back</p></button>
+                            onClick={() => setView("landing")}><Back /><p className='ml-1'>Back</p></button>
                         <button className=" rounded bg-green-400 flex items-center hover:bg-green-600 text-gray-100 py-2 px-3 max-w-[10rem]">
-                            {charge?<Charge/>:<></>}
+                            {charge ? <Charge /> : <></>}
                             {view == "signup" ? "Create" : "Login"}<p className='ml-1'></p><Signup />
                         </button>
                     </div>
