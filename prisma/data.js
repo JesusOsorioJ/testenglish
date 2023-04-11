@@ -1,0 +1,9 @@
+export const data = [{wordSpanish:'carne de res molida',wordEnglish:'ground beef',sentenceSpanish:'The meat for ground beef',sentenceEnglish:'La carne para la carne picada'},
+{wordSpanish:'ahorrar',wordEnglish:'save, put aside, put away',sentenceSpanish:'My dad told me to put away my clothes.',sentenceEnglish:'Mi padre me dijo que guardara la ropa'},
+{wordSpanish:'miserable, avaro',wordEnglish:'miser',sentenceSpanish:'The miser never bought presents',sentenceEnglish:'El avaro nunca compró regalos'},
+{wordSpanish:'ataud',wordEnglish:'casket,chest',sentenceSpanish:'We keep blankets in that old chest',sentenceEnglish:'Guardamos mantas en ese viejo baúl'},
+{wordSpanish:'prometer',wordEnglish:'promise,swear, assure',sentenceSpanish:'The tour guide assured the group that they would be able to see whales from the boat.',sentenceEnglish:'El guía turístico aseguró al grupo que podrían ver ballenas desde el barco.'},
+{wordSpanish:'tendido(acostado)',wordEnglish:'stretch, enlarge',sentenceSpanish:'Sadie turned off her alarm clock and stretched.',sentenceEnglish:'Sadie apagó el despertador y se estiró.'},
+{wordSpanish:'funerario',wordEnglish:'undertaker, mortician',sentenceSpanish:'The local undertaker did the funeral arrangements.',sentenceEnglish:'La funeraria local se encargó de los preparativos del funeral.'},
+{wordSpanish:'mentir',wordEnglish:'lie, fraud',sentenceSpanish:'The police arrested Richard for fraud.',sentenceEnglish:'La policía detuvo a Richard por fraude.'},
+{wordSpanish:'reunir(recoger)',wordEnglish:'get all, gather',sentenceSpanish:'We gathered the leaves in piles.',sentenceEnglish:'Recogimos las hojas en montones.'}]
