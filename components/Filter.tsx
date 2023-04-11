@@ -23,7 +23,6 @@ const Filter: React.FC<Props> =({ user, setUser, lastStep, handlerClick }) => {
         }
     }
 
-
     const handleDeleteFilter = () => {
         router.push('')
     }

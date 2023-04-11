@@ -6,9 +6,6 @@ import Header from '../components/Header'
 import Initialtable from '../components/Initialtable'
 import Realtable from '../components/Realtable';
 import { useState, useEffect } from 'react';
-//ver video completo https://react-hook-form.com/get-started
-
-
 
 export default function Home() {
   const [view, setView] = useState("landing")

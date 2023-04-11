@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { PrismaClient, Prisma, User } from '@prisma/client';
+import { PrismaClient} from '@prisma/client';
 const prisma = new PrismaClient()
 
 export default async (
@@ -11,7 +11,6 @@ export default async (
   const word = JSON.parse(req.body);
   
   if (req.method == 'POST') {
-   console.log("word",word);
    
     try {
      if (word.selectType==null){

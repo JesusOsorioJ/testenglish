@@ -40,7 +40,6 @@ export default async (
 
         return res.status(200).json({ message: response });
       } catch (err) {
-        console.log("err", err);
         return res.status(400).json({ message: err + "" });
       }
 
@@ -55,7 +54,6 @@ export default async (
             lastAnswer: user.lastAnswer
           },
         })
-        console.log("responseback", response);
 
         return res.status(200).json({ message: response });
       } catch (err) {
