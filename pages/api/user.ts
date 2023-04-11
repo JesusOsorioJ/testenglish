@@ -10,9 +10,9 @@ export default async (
 ) => {
   const user: Prisma.UserCreateInput = JSON.parse(req.body);
 
-  switch (req.method) {
+  switch (req.query.type) {
 
-    case 'PUT':      
+    case 'login':
       try {
         const response = await prisma.user.findMany({
           where: {
@@ -20,27 +20,45 @@ export default async (
             password: user.password
           },
         })
-        console.log("responseback", response);
-        
-        return res.status(200).json({ message:response});
+        return res.status(200).json({ message: response });
       } catch (err) {
         return res.status(400).json({ message: 'Something went wrong' });
       }
-    case 'POST':
+    case 'signup':
       try {
         const findEmail = await prisma.user.findMany({
           where: {
             email: JSON.parse(req.body).email,
           },
         })
+
         if (findEmail.length > 0) { throw new Error("the user already exist") }
         const user: Prisma.UserCreateInput = JSON.parse(req.body);
         const response = await prisma.user.create({
           data: user,
         })
+
         return res.status(200).json({ message: response });
       } catch (err) {
+        console.log("err", err);
         return res.status(400).json({ message: err + "" });
+      }
+
+    case 'update':
+      try {
+        const response = await prisma.user.update({
+          where: {
+            email: user.email,
+          },
+          data: {
+            answer: JSON.stringify(user.answer),
+          },
+        })
+        console.log("responseback", response);
+
+        return res.status(200).json({ message: response });
+      } catch (err) {
+        return res.status(400).json({ message: 'Something went wrong' });
       }
     default:
       return res.status(405).json({ message: 'Method not allowed' });

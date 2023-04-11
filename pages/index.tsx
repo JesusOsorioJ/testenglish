@@ -1,18 +1,25 @@
 import Head from 'next/head'
-import { useForm } from 'react-hook-form';
-import { Prisma } from '@prisma/client';
 
-import Login from '../components/Login'
+import LoginSignup from '../components/LoginSignup'
 import Header from '../components/Header'
 
 import Initialtable from '../components/Initialtable'
-import { useState } from 'react';
+import Realtable from '@/components/Realtable';
+import { useState,useEffect } from 'react';
+import Filter from '@/components/Filter';
 //ver video completo https://react-hook-form.com/get-started
 
 
 
 export default function Home() {
-  const [ login, setLogin ] = useState(0)
+  const [ view, setView ] = useState("landing")
+  const [user, setUser] = useState("")
+  useEffect(() => {
+    const item = sessionStorage.getItem("userTestEnglish")
+    if (item !=null){
+      setUser(item)
+    }  
+  }, [])
   return (
     <>
       <Head>
@@ -22,9 +29,11 @@ export default function Home() {
         <script src="https://cdn.tailwindcss.com"></script>
       </Head>
       <main>
-        <Header login={login} setLogin={setLogin} ></Header>
-        {login>0?<Login login={login} setLogin={setLogin} />:<></>}
-        <Initialtable />
+        <Header view={view} setView={setView} ></Header>
+        <Filter/>
+        {view=="login"||view=="signup"?<LoginSignup view={view} setView={setView} />:<></>}
+        {user.length == 0 ?<Initialtable />:
+        <Realtable/>}
       </main>
     </>
   )
