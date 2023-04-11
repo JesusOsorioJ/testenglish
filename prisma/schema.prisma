@@ -16,19 +16,26 @@ model Word {
   wordEnglish     String
   sentenceSpanish String
   sentenceEnglish String
+  type            String
+  // Answer     Answer[]
 }
 
 model User {
-  id       String   @id @default(uuid())
-  email    String @unique
-  password String
-  createdAt  DateTime   @default(now())
-  answer   String
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String
+  createdAt  DateTime @default(now())
+  lastAnswer Int
+  answer     String
+  // Answer     Answer[]
 }
 
 // model Answer {
-//   id     String @id @default(uuid())
-//   userId String
+//   id String @id @default(uuid())
+
 //   wordId Int
-//   author User   @relation(fields: [userId], references: [id])
+//   word Word   @relation(fields: [wordId], references: [id])
+
+//   userId String
+//   user User   @relation(fields: [userId], references: [id])
 // }

@@ -32,7 +32,7 @@ export default async (
           },
         })
 
-        if (findEmail.length > 0) { throw new Error("the user already exist") }
+        if (findEmail.length > 0) { throw new Error("The user already exist") }
         const user: Prisma.UserCreateInput = JSON.parse(req.body);
         const response = await prisma.user.create({
           data: user,
@@ -52,6 +52,7 @@ export default async (
           },
           data: {
             answer: JSON.stringify(user.answer),
+            lastAnswer: user.lastAnswer
           },
         })
         console.log("responseback", response);
