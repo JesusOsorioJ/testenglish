@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import * as React from 'react'
@@ -45,7 +45,8 @@ type Props = {
       if (filter.selectGrade == null) {
         setDataUser(JSON.parse(response.message[0].answer))
       } else {
-          setDataUser(functionFilter(JSON.parse(response.message[0].answer)
+        
+        setDataUser(functionFilter(JSON.parse(response.message[0].answer)
           , filter.selectGrade)) 
       }
 
@@ -76,7 +77,7 @@ type Props = {
       </div>
       {data.map((step, i: number) => (
         <>
-          {filter.selectGrade == undefined || "dataUser[i]" == filter.selectGrade ?
+          {filter.selectGrade == undefined || dataUser[i] == filter.selectGrade ?
             
             <div key={step.id} className="hover:text-gray-900 group w-full text-gray-500 py-2 grid grid-cols-7 lg:grid-cols-12 justify-items-start  gap-6 border-gray-300 border-b-[1px]">
               <div className="col-span-1" >{step.id}</div>
@@ -86,7 +87,7 @@ type Props = {
               <div className="col-span-2 ">{step.type}</div>
               <div className="col-span-3 hidden lg:block ">{step.sentenceEnglish}</div>
 
-              <div></div>
+              <div>{dataUser[i]}</div>
               <button className="col-span-1 lg:hidden lg:font-bold group-hover:block text-green-500" onClick={handlerClick} value={step.id} >Empezar</button>
             </div>
              : <></>}

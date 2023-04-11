@@ -4,7 +4,7 @@ import LoginSignup from '../components/LoginSignup'
 import Header from '../components/Header'
 
 import Initialtable from '../components/Initialtable'
-import Realtable from '../components/realtable';
+// import Realtable from '../components/realtable';
 import { useState, useEffect } from 'react';
 //ver video completo https://react-hook-form.com/get-started
 
@@ -30,7 +30,7 @@ export default function Home() {
         {view == "login" || view == "signup" ? <LoginSignup view={view} setView={setView} /> : <></>}
         <Header setView={setView} user={user} ></Header>
         
-        {user == "" ? <Initialtable /> : <Realtable  user={user} setUser={setUser}/>}
+        {user == "" ? <Initialtable /> :<></>}
       
     </>
   )
