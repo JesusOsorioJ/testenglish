@@ -8,16 +8,13 @@ import Realtable from '../components/realtable';
 import { useState, useEffect } from 'react';
 //ver video completo https://react-hook-form.com/get-started
 
-// the 3 railway
+
 
 export default function Home() {
   const [view, setView] = useState("landing")
   const [user, setUser] = useState("")
   useEffect(() => {
     const item = sessionStorage.getItem("userTestEnglish")
-
-    console.log("item", user == "");
-
     if (item != null) {
       setUser(item)
     }

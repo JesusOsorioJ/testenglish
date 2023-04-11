@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import * as React from 'react'
