@@ -9,7 +9,7 @@ export default function Realtable({user,setUser}) {
   const [data, setData] = useState([{ id:"",wordSpanish: "", wordEnglish: "", sentenceSpanish: "", sentenceEnglish: "", type:"" }])
   const [showForm, setShowForm] = useState()
   const [dataUser, setDataUser] = useState({})
-  const [ lastStep, setLastStep ] = useState("")
+  const [ lastStep, setLastStep ] = useState("") 
   
   const router = useRouter()
   const filter = router.query
