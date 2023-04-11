@@ -1,5 +1,5 @@
 
-import { Login, Signup, Logout, Back } from '../styles/icons/icons'
+import { Login, Signup, Logout } from '../styles/icons/icons'
 
 export default function Header({ setView, user }) {
 

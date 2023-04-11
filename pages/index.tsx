@@ -4,7 +4,7 @@ import LoginSignup from '../components/LoginSignup'
 import Header from '../components/Header'
 
 import Initialtable from '../components/Initialtable'
-import Realtable from '@/components/Realtable';
+import Realtable from '../components/Realtable';
 import { useState, useEffect } from 'react';
 //ver video completo https://react-hook-form.com/get-started
 
