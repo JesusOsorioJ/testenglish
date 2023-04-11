@@ -1,15 +1,23 @@
+//@ts-nocheck
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import * as React from 'react'
 import FormTest from './FormTest'
 import functionFilter from './functionFilter'
 import Filter from './Filter';
 
+type Props = {
+  user: string
+  setUser:  React.Dispatch<React.SetStateAction<string>>
+}
 
-export default function Realtable({user,setUser}) {
+
+
+ const Realtable: React.FC<Props> = ({user,setUser}) => {
   const [data, setData] = useState([{ id:"",wordSpanish: "", wordEnglish: "", sentenceSpanish: "", sentenceEnglish: "", type:"" }])
-  const [showForm, setShowForm] = useState()
+  const [showForm, setShowForm] = useState(-1)
   const [dataUser, setDataUser] = useState({})
-  const [ lastStep, setLastStep ] = useState("") 
+  const [ lastStep, setLastStep ] = useState(-1) 
   
   const router = useRouter()
   const filter = router.query
@@ -20,14 +28,13 @@ export default function Realtable({user,setUser}) {
       const email = sessionStorage.getItem("userTestEnglish")
       const password = sessionStorage.getItem("passwordTestEnglish")
       const filter1 = router.query
-      console.log("filter1",filter1);
       const response0 = await fetch("api/word", {
         method: 'POST', body: JSON.stringify(filter)
       }).then(response => response.json())
       if (filter.selectType == null){ 
         setData(response0.message)
       }else{
-        setData(response0.message.filter(data=>(data.type==filter.selectType)))
+        // setData(response0.message.filter(data=>(data.type==filter.selectType)))
       }
       
 
@@ -36,10 +43,8 @@ export default function Realtable({user,setUser}) {
       }).then(response => response.json())
       setLastStep(response.message[0].lastAnswer+1)
       if (filter.selectGrade == null) {
-        await console.log("enter here no grade");
         setDataUser(JSON.parse(response.message[0].answer))
       } else {
-        await console.log("enter here grade");
         
         setDataUser(functionFilter(JSON.parse(response.message[0].answer)
           , filter.selectGrade)) 
@@ -48,9 +53,9 @@ export default function Realtable({user,setUser}) {
     })()
   }, [showForm,user])
 
-  const handlerClick = (e:{}) => {
-    sessionStorage.setItem("stepTestEnglish", e.target.value)
-    setShowForm(e.target.value-1)
+  const handlerClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    sessionStorage.setItem("stepTestEnglish", e.currentTarget.value)
+    setShowForm(parseInt(e.currentTarget.value)-1)
   }
 
 
@@ -58,7 +63,8 @@ export default function Realtable({user,setUser}) {
   return (
     <div className='static px-10 bg-gray-100'>
       <Filter user={user} setUser={setUser} lastStep={lastStep} handlerClick={handlerClick}/>
-      {showForm != null ? <FormTest showForm={showForm} setShowForm={setShowForm} data={data} dataUser={dataUser} /> : <></>}
+      <button onClick={handlerClick}></button>
+      {showForm > -1 ? <FormTest showForm={showForm} setShowForm={setShowForm} data={data} dataUser={dataUser} /> : <></>}
       
       < div className="text-xl py-2 grid grid-cols-7 lg:grid-cols-12 gap-4  font-semibold border-gray-500 border-b-[1px]">
         <div className="col-span-1">#</div>
@@ -90,3 +96,5 @@ export default function Realtable({user,setUser}) {
     </div>
   )
 }
+
+export default Realtable

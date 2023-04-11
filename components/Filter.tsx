@@ -1,6 +1,14 @@
 import { useRouter } from 'next/navigation';
+import * as React from 'react'
 
-export default function Filter({ user, setUser, lastStep, handlerClick }) {
+type Props = {
+    user: string
+    setUser:  React.Dispatch<React.SetStateAction<string>>
+    lastStep: number
+    handlerClick: React.MouseEventHandler<HTMLButtonElement>
+}
+
+const Filter: React.FC<Props> =({ user, setUser, lastStep, handlerClick }) => {
     const router = useRouter();
 
     const filterType = ["word", "body parts", "family", "dates", "house place", "phrasal verb",
@@ -8,7 +16,7 @@ export default function Filter({ user, setUser, lastStep, handlerClick }) {
         "should-must", "expressions", "either-neither", "similar word", "uncountable",
         "though", "ways of looking", "climate", "despite-spite", "phrase"]
 
-    const handleAddFilter = (e: { target: { name: "", value: "" } }) => {
+    const handleAddFilter = (e:React.ChangeEvent<HTMLSelectElement>) => {
         if (e.target.value == "") { router.push('') } else {
             setUser(user)
             router.push(`?${e.target.name}=${e.target.value}`)
@@ -24,7 +32,7 @@ export default function Filter({ user, setUser, lastStep, handlerClick }) {
         <div className='flex flex-col lg:flex-row justify-between items-center px-10'>
             <p className="font-semibold  p-4 text-[3rem]" >Quiz £</p>
             {user.length > 0 ?
-                <form onSubmit={handleAddFilter} className="flex flex-col md:flex-row gap-4">
+                <form className="flex flex-col md:flex-row gap-4">
                     <div className='flex gap-2'>
                         <label htmlFor="selectGrade">SelectGrade</label>
                         <select autoComplete="country-name" className=" block w-full rounded-md border-0 bg-white py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -55,3 +63,4 @@ export default function Filter({ user, setUser, lastStep, handlerClick }) {
         </div >
     )
 }
+export default Filter

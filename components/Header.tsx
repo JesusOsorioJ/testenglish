@@ -1,7 +1,13 @@
 
 import { Login, Signup, Logout } from '../styles/icons/icons'
+import * as React from 'react'
 
-export default function Header({ setView, user }) {
+type Props = {
+  user: String
+  setView:  React.Dispatch<React.SetStateAction<string>>
+}
+
+const Header : React.FC<Props> =({ setView, user }) => {
 
   const HandlerLogout = ()=>{
     sessionStorage.setItem("userTestEnglish","") 
@@ -31,3 +37,5 @@ export default function Header({ setView, user }) {
     </div>
   )
 }
+
+export default Header

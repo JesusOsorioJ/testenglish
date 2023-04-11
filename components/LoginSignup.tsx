@@ -1,10 +1,15 @@
-import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import * as React from 'react'
+
 import { Signup, Back, Charge } from '../styles/icons/icons'
 
+type Props = {
+    view: String
+    setView:  React.Dispatch<React.SetStateAction<string>>
+  }
 
-export default function LoginSignup({ view, setView }) {
+const LoginSignup: React.FC<Props> = ({ view, setView }) =>{
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("")
     const [charge, setCharge] = useState(false)
@@ -84,3 +89,5 @@ export default function LoginSignup({ view, setView }) {
 
     )
 }
+
+export default LoginSignup
