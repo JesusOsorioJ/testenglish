@@ -5,7 +5,7 @@ import functionFilter from './functionFilter'
 import Filter from './Filter';
 
 
-export default function realtable({user,setUser}) {
+export default function Realtable({user,setUser}) {
   const [data, setData] = useState([{ id:"",wordSpanish: "", wordEnglish: "", sentenceSpanish: "", sentenceEnglish: "", type:"" }])
   const [showForm, setShowForm] = useState()
   const [dataUser, setDataUser] = useState({})
